@@ -32,49 +32,58 @@ footer {
     color: #666;
     border-top: 1px solid #ddd;
     width: 100%;
-  }
+}
+
+/* --- Full-page sections & scroll snapping --- */
+body {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;   /* enables snapping */
+    scroll-behavior: smooth;         /* smooth scrolling */
+}
+
+.fullpage {
+    min-height: 100vh;               /* full screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;         /* vertical center */
+    align-items: center;             /* horizontal center */
+    scroll-snap-align: start;        /* snap to top */
+    padding: 3rem 1rem;
+}
 
 /* Hero Section */
 #hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Full screen height */
     background-color: #f5f5f5;
     text-align: center;
     position: relative;
 }
-
 .hero-content {
     animation: fadeIn 1.5s ease-in-out;
 }
-
 #hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 6vw, 3.5rem);
     font-weight: bold;
     color: #333;
     margin-bottom: 1rem;
     font-family: 'Playfair Display', serif;
 }
-
 .hero-subtext {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: #555;
 }
 
 /* Navigation Bar Style */
 header {
-    position: fixed;
+    position: static; /* no fixed header */
     top: 0;
     width: 100%;
     padding: 1rem;
-    background-color: rgba(245, 245, 245, 0.9);
+    background: transparent;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: none;
     z-index: 10;
 }
-
 header nav a {
     margin: 0 1.5rem;
     color: #333;
@@ -82,7 +91,6 @@ header nav a {
     font-size: 1.1rem;
     transition: color 0.3s;
 }
-
 header nav a:hover {
     color: #eea1c7;
 }
@@ -109,16 +117,17 @@ p {
 
 /* About Section Styling */
 #about {
-    max-width: 750px;   /* keeps lines narrower for easier reading */
-    margin: 0 auto;     /* centers the text */
-    text-align: left;   /* left-align text for a professional look */
-    line-height: 1.8;   /* more spacing between lines */
-    font-size: 1.05rem; /* slightly larger font */
+    background: #fff;
+}
+#about .about-inner {
+    max-width: 750px;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.05rem;
     color: #444;
 }
-
-#about p {
-    margin-bottom: 1.2rem; /* space between paragraphs */
+#about .about-inner p {
+    margin-bottom: 1.2rem;
 }
 
 /* Project Section */
@@ -127,8 +136,9 @@ p {
     gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 900px;
+    width: 100%;
 }
-
 .project-card {
     width: 45%;
     padding: 1rem;
@@ -138,21 +148,17 @@ p {
     transition: transform 0.2s;
     background-color: #fff;
 }
-
 .project-card:hover {
     transform: translateY(-5px);
 }
-
 .project-card h3 {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
-
 .project-card a {
     color: #f4c7f2;
     text-decoration: none;
 }
-
 .project-card a:hover {
     text-decoration: underline;
     color: #f4c7f2;
@@ -165,9 +171,8 @@ p {
     color: #fcbef1;
     text-decoration: none;
 }
-
 .contact-links a:hover {
-    color: #f4c7f2
+    color: #f4c7f2;
 }
 
 /* Cursor Effect Circle */
@@ -185,8 +190,8 @@ p {
 
 /* Animation */
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px); }
-    to {opacity: 1; transform: translateY(0); }
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
 /* Responsive Design */
