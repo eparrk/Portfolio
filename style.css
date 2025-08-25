@@ -107,6 +107,20 @@ p {
     color: #555;
 }
 
+/* About Section Styling */
+#about {
+    max-width: 750px;   /* keeps lines narrower for easier reading */
+    margin: 0 auto;     /* centers the text */
+    text-align: left;   /* left-align text for a professional look */
+    line-height: 1.8;   /* more spacing between lines */
+    font-size: 1.05rem; /* slightly larger font */
+    color: #444;
+}
+
+#about p {
+    margin-bottom: 1.2rem; /* space between paragraphs */
+}
+
 /* Project Section */
 .project-grid {
     display: flex;
