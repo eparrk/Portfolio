@@ -13,70 +13,62 @@
     <section id="hero">
         <div class="hero-content">
             <h1>Hello, my name is Eunice Park</h1>
-            <p class="hero-subtext">I'm passionate about technolgy, finance, and creating meaningful digital experiences.</p>
+            <p class="hero-subtext">I'm passionate about technology, finance, and creating meaningful digital experiences.</p>
         </div>
     </section>
 
     <!-- Header -->
-     <header>
+    <header>
         <nav>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="#contact">Contact </a>
+            <a href="#contact">Contact</a>
         </nav>
-     </header>
+    </header>
 
-     <!-- About Section -->
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a fifth-year Economics student at the University of Ottawa, studying in the French stream. 
-      Currently, I work as a student economic analyst at Statistics Canada in the Prices Team, under the 
-      International Accounts and Trades Division. I am fluent in three languages and passionate about building 
-      a career that advances technology and creates meaningful value in the financial world. 
-    </p>
-    <p>
-      In addition to my studies and work, I am preparing my application to begin the CFA journey while I complete my undergraduate degree. 
-      I also serve as the Youth Champion at the GCWCC at Statistics Canada and am currently working as one of the co-founders 
-      of a startup project with four other members at the University of Ottawa. 
-    </p>
-    <p>
-      My dream is to work towards becoming a quantitative analyst (quant) or a consultant.
-    </p>
-  </section>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+        I'm a fifth-year Economics student at the University of Ottawa, studying in the French stream. Currently, I work as a student economic analyst at Statistics Canada in the Prices Team, under the International Accounts and Trades Division. I am fluent in three languages and passionate about building a career that advances technology and creates meaningful value in the financial world. 
+        </p>
+        <p>
+        In addition to my studies and work, I also serve as the Youth Champion at the GCWCC at Statistics Canada and am currently working as one of the co-founders of startup project with four University of Ottawa alumni. 
+        </p>
+    </section>
   
 
-     <!--Projects Section-->
-     <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects">
         <h2>Projects</h2>
         <div class="project-grid">
             <!-- Project 1 -->
             <div class="project-card">
                 <h3>Project Title 1</h3>
                 <p>Brief description of the project.</p>
-                <a href="https://github.com/yourusername/project1" target="_blank">Github</a>
+                <a href="https://github.com/eparrk/project1" target="_blank">GitHub</a>
             </div>
         </div>
-     </section>
+    </section>
 
-     <!-- Contact Section -->
-     <section id="contact">
+    <!-- Contact Section -->
+    <section id="contact">
         <h2>Contact</h2>
         <p>Feel free to reach out through any of the following platforms:</p>
         <div class="contact-links">
-            <a href="https://www.linkedin.com/in/eunicepark28/" target="blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/eunicepark28/" target="_blank">LinkedIn</a>
             <a href="https://github.com/eparrk" target="_blank">GitHub</a>
             <a href="mailto:epark044@uottawa.ca">Email</a>
         </div>
-     </section>
+    </section>
 
-     <!--Footer-->
-     <Footer>
-        <p>&copy; Park 2025 </p>
-     </Footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Eunice Park 2025</p>
+    </footer>
 
-     <!-- JavaScript for Smooth Scrolling and Cursor Effect -->
-     <script>
+    <!-- JavaScript for Smooth Scrolling and Cursor Effect -->
+    <script>
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -93,8 +85,8 @@
         document.body.appendChild(cursor);
 
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = '${e.pageX}px';
-            cursor.style.top = '${e.pageY}px';
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
         });
 
         const headerElements = document.querySelectorAll('header nav a');
@@ -106,6 +98,6 @@
                 cursor.style.backgroundColor = 'rgba(243, 226, 230)';
             });
         });
-     </script>
+    </script>
 </body>
 </html>
