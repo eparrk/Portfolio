@@ -4,14 +4,18 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-}
-
-html, body {
+  }
+  
+  :root {
+    --header-h: 64px; /* tweak if you change header size */
+  }
+  
+  html, body {
     height: 100%;
     margin: 0;
-}
-
-body {
+  }
+  
+  body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,126 +26,127 @@ body {
     line-height: 1.6;
     padding: 20px 20px 0; /* remove bottom padding */
     overflow: auto;       /* allow scrolling if needed */
-}
-
-/* keep your updated footer */
-footer {
+  }
+  
+  /* keep your updated footer */
+  footer {
     margin-top: auto; /* pushes it down */
     padding: 1rem;
     font-size: 0.8rem;
     color: #666;
     border-top: 1px solid #ddd;
     width: 100%;
-}
-
-/* --- Full-page sections & scroll snapping --- */
-body {
+  }
+  
+  /* --- Full-page sections & scroll snapping --- */
+  body {
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;   /* enables snapping */
-    scroll-behavior: smooth;         /* smooth scrolling */
-}
-
-.fullpage {
-    min-height: 100vh;               /* full screen */
+    scroll-snap-type: y proximity;  /* natural snap on long content */
+    scroll-behavior: smooth;
+  }
+  
+  .fullpage {
+    /* order matters: put vh first (fallback), then svh to improve on mobile */
+    min-height: calc(100vh - var(--header-h));   /* fallback */
+    min-height: calc(100svh - var(--header-h));  /* better on mobile toolbars */
     display: flex;
     flex-direction: column;
-    justify-content: center;         /* vertical center */
-    align-items: center;             /* horizontal center */
-    scroll-snap-align: start;        /* snap to top */
+    justify-content: center;   /* vertical center */
+    align-items: center;       /* horizontal center */
+    scroll-snap-align: start;  /* snap to top */
     padding: 3rem 1rem;
     width: 100%;
-    position: relative;  /* helps avoid accidental stacking */
-}
-
-/* Hero Section */
-#hero {
+    position: relative;        /* guards against accidental overlap */
+  }
+  
+  /* Hero Section */
+  #hero {
     background-color: #f5f5f5;
     text-align: center;
     position: relative;
-}
-.hero-content {
-    animation: fadeIn 1.5s ease-in-out;
-}
-#hero h1 {
+  }
+  .hero-content { animation: fadeIn 1.5s ease-in-out; }
+  #hero h1 {
     font-size: clamp(2rem, 6vw, 3.5rem);
     font-weight: bold;
     color: #333;
     margin-bottom: 1rem;
     font-family: 'Playfair Display', serif;
-}
-.hero-subtext {
+  }
+  .hero-subtext {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: #555;
-}
-
-/* Navigation Bar Style */
-header {
-    position: static; /* no fixed header */
+  }
+  
+  /* Sticky header that stays visible while scrolling */
+  header {
+    position: sticky;
     top: 0;
+    z-index: 1000;
     width: 100%;
-    padding: 1rem;
-    background: transparent;
+    height: var(--header-h);
+    background: rgba(250, 250, 250, 0.9);
+    backdrop-filter: saturate(140%) blur(6px);
     display: flex;
+    align-items: center;  /* vertically center links */
     justify-content: center;
-    border-bottom: none;
-    z-index: 10;
-}
-header nav a {
-    margin: 0 1.5rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid #eaeaea;
+  }
+  header nav a {
+    margin: 0 1rem;
     color: #333;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-header nav a:hover {
-    color: #eea1c7;
-}
-
-/* Section Styles */
-/* Sections are full width; inner containers handle readable width */
-section {
+    font-size: 1.05rem;
+    transition: color 0.2s ease;
+  }
+  header nav a:hover { color: #eea1c7; }
+  
+  /* prevent anchor targets from hiding under the sticky header */
+  html { scroll-padding-top: var(--header-h); }
+  
+  /* Section Styles: full width; inner containers control readable width */
+  section {
     padding: 2rem 1rem;
     width: 100%;
-}
-
-h2 {
+  }
+  
+  h2 {
     font-size: 1.8rem;
     color: #333;
     margin-bottom: 1rem;
     font-weight: bold;
-}
-
-p {
+  }
+  
+  p {
     font-size: 1rem;
     line-height: 1.6;
     color: #555;
-}
-
-/* About Section Styling */
-#about {
-    background: #fff;
-}
-#about .about-inner {
+  }
+  
+  /* About Section */
+  #about { background: #fff; }
+  #about .about-inner {
     max-width: 750px;
     text-align: left;
     line-height: 1.8;
     font-size: 1.05rem;
     color: #444;
-}
-#about .about-inner p {
-    margin-bottom: 1.2rem;
-}
-
-/* Project Section */
-.project-grid {
+    margin: 0 auto;
+  }
+  #about .about-inner p { margin-bottom: 1.2rem; }
+  
+  /* Projects */
+  .project-grid {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 900px;
     width: 100%;
-}
-.project-card {
+    margin: 0 auto;
+  }
+  .project-card {
     width: 45%;
     padding: 1rem;
     border: 1px solid #ddd;
@@ -149,74 +154,61 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     background-color: #fff;
-}
-.project-card:hover {
-    transform: translateY(-5px);
-}
-.project-card h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-}
-.project-card a {
+  }
+  .project-card:hover { transform: translateY(-5px); }
+  .project-card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
+  .project-card a {
     color: #f4c7f2;
     text-decoration: none;
-}
-.project-card a:hover {
-    text-decoration: underline;
-    color: #f4c7f2;
-}
-
-/* --- Experience Section --- */
-#experience .experience-list {
-    max-width: 800px;
-    width: 100%;
-    text-align: left;
   }
+  .project-card a:hover { text-decoration: underline; color: #f4c7f2; }
   
+  /* --- Experience Section --- */
+  #experience .experience-list {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 1rem;   /* keep content away from edges */
+  }
   .exp-item {
     background: #fff;
     border: 1px solid #eaeaea;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 1.25rem;
     margin-bottom: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
   }
-  
   .exp-item h3 {
     margin-bottom: 0.35rem;
     font-size: 1.15rem;
     color: #222;
   }
-  
   .exp-meta {
     color: #777;
     font-size: 0.95rem;
     margin-bottom: 0.6rem;
   }
-  
   .exp-item ul {
     margin-left: 1.1rem;
     padding-left: 0.75rem;
   }
-  
   .exp-item li {
     margin: 0.35rem 0;
     line-height: 1.6;
-  }  
-
-/* Contact Links */
-.contact-links a {
+  }
+  
+  /* Contact Links */
+  .contact-links a {
     display: inline-block;
     margin: 0.5rem;
     color: #fcbef1;
     text-decoration: none;
-}
-.contact-links a:hover {
-    color: #f4c7f2;
-}
-
-/* Cursor Effect Circle */
-.cursor {
+  }
+  .contact-links a:hover { color: #f4c7f2; }
+  
+  /* Cursor Effect Circle */
+  .cursor {
     position: absolute;
     width: 50px;
     height: 50px;
@@ -226,9 +218,10 @@ p {
     transform: translate(-50%, -50%);
     transition: transform 0.1s ease-out;
     z-index: 1000;
-}
-
-header nav a[href$="resume.pdf"] {
+  }
+  
+  /* Make Resume link look like a pill */
+  header nav a[href$="resume.pdf"] {
     border: 1px solid #eea1c7;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
@@ -236,17 +229,33 @@ header nav a[href$="resume.pdf"] {
   header nav a[href$="resume.pdf"]:hover {
     background: #eea1c7;
     color: #fff;
-  }  
-
-/* Animation */
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .project-card {
-        width: 100%;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    #hero h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+    .hero-subtext { font-size: 1rem; }
+  
+    #about .about-inner {
+      max-width: 680px;
+      font-size: 1rem;
+      line-height: 1.7;
+      padding: 0 0.25rem;
     }
-}
+  
+    .project-card { width: 100%; }
+  
+    .exp-item { padding: 1rem; }
+    .exp-item h3 { font-size: 1.05rem; }
+  }
+  
+  @media (max-width: 600px) {
+    .project-card { width: 100%; }
+  }
+  
