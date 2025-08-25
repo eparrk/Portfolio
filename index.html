@@ -1,29 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eunice Park | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Hello, I’m [Your Name]</h1>
-    <p>Welcome to my portfolio website</p>
-  </header>
-  
-  <main>
-    <section id="projects">
-      <h2>Projects</h2>
-      <article>
-        <h3>Project 1</h3>
-        <p>Description of your first project.</p>
-      </article>
-    </section>
-  </main>
 
-  <footer>
-    <p>© 2025 [Your Name]</p>
-  </footer>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hello, my name is Eunice Park</h1>
+            <p class="hero-subtext">I'm passionate about technolgy, finance, and creating meaningful digital experiences.</p>
+        </div>
+    </section>
+
+    <!-- Header -->
+     <header>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact </a>
+        </nav>
+     </header>
+
+     <!-- About Section -->
+     <section id="about">
+        <h2>About Me</h2>
+        <p>I'm a fifth-year Economics student at the University of Ottawa, studying in the French stream. 
+            Currently, I work as a student economic analyst at Statistics Canada in the Prices Team, under the 
+            International Accounts and Trades Division. I am fluent in three languages and passionate about building 
+            a career that advances technology and creates meaningful value in the financial world. 
+            My dream is to work towards becoming a quantitative analyst (quant) or a consultant.
+        </p>
+     </section>
+
+     <!--Projects Section-->
+     <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <h3>Project Title 1</h3>
+                <p>Brief description of the project.</p>
+                <a href="https://github.com/yourusername/project1" target="_blank">Github</a>
+            </div>
+        </div>
+     </section>
+
+     <!-- Contact Section -->
+     <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out through any of the following platforms:</p>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/eunicepark28/" target="blank">LinkedIn</a>
+            <a href="https://github.com/eparrk" target="_blank">GitHub</a>
+            <a href="mailto:epark044@uottawa.ca">Email</a>
+        </div>
+     </section>
+
+     <!--Footer-->
+     <Footer>
+        <p>&copy; Park 2025 </p>
+     </Footer>
+
+     <!-- JavaScript for Smooth Scrolling and Cursor Effect -->
+     <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Cursor Effect
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = '${e.pageX}px';
+            cursor.style.top = '${e.pageY}px';
+        });
+
+        const headerElements = document.querySelectorAll('header nav a');
+        headerElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.backgroundColor = 'rgba(243, 226, 230)';
+            });
+            element.addEventListener('mouseleave', () => {
+                cursor.style.backgroundColor = 'rgba(243, 226, 230)';
+            });
+        });
+     </script>
 </body>
 </html>
