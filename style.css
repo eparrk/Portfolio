@@ -49,6 +49,8 @@ body {
     align-items: center;             /* horizontal center */
     scroll-snap-align: start;        /* snap to top */
     padding: 3rem 1rem;
+    width: 100%;
+    position: relative;  /* helps avoid accidental stacking */
 }
 
 /* Hero Section */
@@ -96,10 +98,10 @@ header nav a:hover {
 }
 
 /* Section Styles */
+/* Sections are full width; inner containers handle readable width */
 section {
     padding: 2rem 1rem;
     width: 100%;
-    max-width: 800px;
 }
 
 h2 {
